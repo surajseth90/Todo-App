@@ -2,10 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 var app = express();
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); // for EJS
+app.use(express.static('public')) // it tells to express o serve all the static file present in public folder.
 app.use(express.urlencoded({ extended: true }));
 
-var example = "working";
 var items = [];
 
 app.get("/", function (req, res) {
