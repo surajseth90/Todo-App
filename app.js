@@ -14,18 +14,21 @@ const trySchema = new mongoose.Schema({
 
 const item = mongoose.model("task", trySchema);
 
-const todo = new item({
-  name: "todo app",
-});
-
-todo.save();
-
 app.get("/", function (req, res) {
   item.find({}, function (err, items) {
     if (!err) {
       res.render("list", { ejes: items });
     }
   });
+});
+
+app.post("/", function (req, res) {
+  const itemName = req.body.ele1;
+  const todo = new item({
+    name: itemName,
+  });
+  todo.save();
+  res.redirect("/");
 });
 
 app.listen(8000, function () {
