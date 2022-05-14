@@ -31,6 +31,16 @@ app.post("/", function (req, res) {
   res.redirect("/");
 });
 
+app.post("/delete", function (req, res) {
+  const checked = req.body.checkbox;
+  item.findByIdAndRemove(checked, function (err) {
+    if (!err) {
+      console.log("deleted");
+      res.redirect("/");
+    }
+  });
+});
+
 app.listen(8000, function () {
   console.log("Server Started");
 });

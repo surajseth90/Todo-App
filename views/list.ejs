@@ -13,10 +13,18 @@
     </div>
     <div class="box">
       <% for(var i = 0 ; i < ejes.length; i++){ %>
-      <div class="item">
-        <input class="checkbox" type="checkbox" />
-        <p><%= ejes[i].name%></p>
-      </div>
+      <form action="/delete" ,method="POST">
+        <div class="item">
+          <input
+            class="checkbox"
+            type="checkbox"
+            name="checkbox"
+            onchange="this.form.submit()"
+            value="<%= ejes[i]._id%>"
+          />
+          <p><%= ejes[i].name%></p>
+        </div>
+      </form>
       <% }%>
       <form action="/" method="POST">
         <input type="text" name="ele1" id="ele1" placeholder="Enter the task" />
